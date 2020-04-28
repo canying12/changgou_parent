@@ -12,6 +12,9 @@
     <groupId>com.changgou</groupId>
     <artifactId>changgou_service</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>changgou_service_goods</module>
+    </modules>
 
 
 </project>
