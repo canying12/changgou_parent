@@ -12,5 +12,8 @@
     <groupId>com.changgou</groupId>
     <artifactId>changgou_web</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>changgou_web_backstage</module>
+    </modules>
 
 </project>
