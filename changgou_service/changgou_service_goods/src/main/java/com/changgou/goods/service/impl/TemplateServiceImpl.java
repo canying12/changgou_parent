@@ -45,4 +45,9 @@ public class TemplateServiceImpl implements TemplateService {
 
         return pageResult;
     }
+
+    @Override
+    public void insert(Template template) {
+        templateMapper.insertSelective(template);
+    }
 }

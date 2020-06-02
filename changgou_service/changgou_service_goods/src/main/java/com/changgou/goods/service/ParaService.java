@@ -15,4 +15,14 @@ public interface ParaService {
      * @return
      */
     PageResult<ParaVo> findAllByTemplateId(Integer templateId,Integer page,Integer limit);
+
+    /**
+     * 模糊搜搜
+     * @param templateId
+     * @param search
+     * @param page
+     * @param limit
+     * @return
+     */
+    PageResult<ParaVo> fuzzyQuery(Integer templateId, String search, Integer page, Integer limit);
 }

@@ -15,13 +15,19 @@ import org.springframework.web.bind.annotation.*;
  * @author 残影
  * @date 2020/5/10 9:48
  */
-@Api("模板参数")
+@Api(tags = "模板参数")
 @RestController
 @RequestMapping("/template")
 public class TemplateController {
     @Autowired
     private TemplateService templateService;
 
+    @ApiOperation("新增模板")
+    @PostMapping("add")
+    public Result insert(@RequestBody Template template){
+        templateService.insert(template);
+        return new Result(true,StatusCode.OK,"添加成功");
+    }
     @ApiOperation("通过id进行删除")
     @DeleteMapping("/{id}")
     public Result delById(@PathVariable Integer id){

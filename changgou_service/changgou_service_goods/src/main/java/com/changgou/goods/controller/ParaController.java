@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author 残影
  * @date 2020/5/11 18:58
  */
-@Api("规格参数")
+@Api(tags = "规格参数")
 @RestController
 @RequestMapping("/para")
 public class ParaController {
@@ -30,5 +30,13 @@ public class ParaController {
                                       @RequestParam Integer limit){
         PageResult<ParaVo> paraVoPageResult = paraService.findAllByTemplateId(templateId,page,limit);
         return new Result(true, StatusCode.OK,"查询成功",paraVoPageResult);
+    }
+
+    @ApiOperation("模糊搜索")
+    @GetMapping("/search")
+    public Result fuzzyQuery (@RequestParam Integer templateId,@RequestParam String search,
+                              @RequestParam Integer page,@RequestParam Integer limit ){
+        PageResult<ParaVo> paraVoPageResult =paraService.fuzzyQuery(templateId,search,page,limit);
+        return new Result(true,StatusCode.OK,"查询成功",paraVoPageResult);
     }
 }

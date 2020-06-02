@@ -17,4 +17,7 @@ public interface TemplateService {
 
     //根据模板名称进行模糊查询
     PageResult<Template> fuzzyQuery(String search, Integer page, Integer limit);
+
+    //新增模板
+    void insert(Template template);
 }

@@ -23,4 +23,11 @@ public class ParaServiceImpl implements ParaService {
         PageResult<ParaVo> paraVoPageResult = new PageResult(pageList.getTotal(),pageList.getResult());
         return paraVoPageResult;
     }
+
+    @Override
+    public PageResult<ParaVo> fuzzyQuery(Integer templateId, String search, Integer page, Integer limit) {
+        Page<ParaVo> pageList = PageHelper.startPage(page,limit).doSelectPage(() ->paraMapper.fuzzyQuery(templateId,search));
+        PageResult<ParaVo> paraVoPageResult = new PageResult(pageList.getTotal(),pageList.getResult());
+        return paraVoPageResult;
+    }
 }

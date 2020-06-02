@@ -2,6 +2,7 @@ package com.changgou.goods.dao;
 
 import com.changgou.pojo.Para;
 import com.changgou.vo.ParaVo;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -31,4 +32,10 @@ public interface ParaMapper extends Mapper<Para> {
             "from tb_template a inner join tb_para b  " +
             "on a.id = b.template_id and a.id = #{templateId} ")
     List<ParaVo> findAllByTemplateId(Integer templateId);
+
+    @Select("select b.id,b.name, b.options,b.seq,b.template_id,a.name as templateName  " +
+            "from tb_template a inner join tb_para b  " +
+            "on a.id = b.template_id and a.id = #{templateId} and" +
+            " concat(b.options,b.name) like concat('%',#{search},'%')")
+    List<ParaVo> fuzzyQuery(@Param("templateId") Integer templateId, @Param("search") String search);
 }
