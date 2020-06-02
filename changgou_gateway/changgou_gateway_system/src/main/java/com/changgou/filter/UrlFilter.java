@@ -12,7 +12,6 @@ public class UrlFilter implements GlobalFilter,Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        System.out.println("经过第2个过滤器UrlFilter");
         ServerHttpRequest request = exchange.getRequest();
         String url = request.getURI().getPath();
         System.out.println("url:"+url);

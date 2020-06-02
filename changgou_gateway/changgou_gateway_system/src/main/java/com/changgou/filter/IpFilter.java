@@ -13,7 +13,6 @@ import java.net.InetSocketAddress;
 public class IpFilter implements GlobalFilter,Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        System.out.println("经过第1个过滤器IpFilter");
         ServerHttpRequest request = exchange.getRequest();
         InetSocketAddress remoteAddress = request.getRemoteAddress();
         System.out.println("ip:"+remoteAddress.getHostName());
